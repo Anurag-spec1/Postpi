@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carbon.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <carbon.widget.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:carbon_cornerRadius="10dp"
+        app:carbon_stroke="@color/carbon_orange_500"
+        app:carbon_strokeWidth="1dp"
+        android:text="GET"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:background="@color/carbon_black_12"
+        android:id="@+id/methodSelector"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"/>
+
+    <carbon.widget.LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_toEndOf="@id/methodSelector"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentEnd="true"
+        app:carbon_cornerRadius="10dp"
+        app:carbon_strokeWidth="1dp"
+        app:carbon_stroke="@color/carbon_orange_500"
+        android:layout_height="wrap_content">
+
+    <carbon.widget.EditText
+        android:id="@+id/etApi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/carbon_black_12"
+        android:textColor="@color/carbon_blue_900"
+        android:textSize="18sp"
+        android:gravity="center_vertical"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="10dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:scrollHorizontally="true"
+        android:text="https://helloanuraghowareyjjws" />
+
+    </carbon.widget.LinearLayout>
+
+
+</carbon.widget.RelativeLayout>
