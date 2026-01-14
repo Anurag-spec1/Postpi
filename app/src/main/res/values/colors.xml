@@ -19,4 +19,10 @@
     <color name="success">#4CAF50</color>
     <color name="warning">#FFC107</color>
     <color name="error">#F44336</color>
+
+    <color name="bg_dark">#0F1115</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#9AA0A6</color>
+    <color name="accent_green">#2ECC71</color>
+
 </resources>
