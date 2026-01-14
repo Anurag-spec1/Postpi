@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <carbon.widget.TextView
         android:layout_width="wrap_content"
@@ -34,7 +34,10 @@
         android:layout_alignParentEnd="true"
         app:carbon_cornerRadius="10dp"
         app:carbon_strokeWidth="1dp"
+        android:orientation="horizontal"
+        android:background="@color/carbon_black_12"
         app:carbon_stroke="@color/carbon_orange_500"
+        android:id="@+id/linLay1"
         android:layout_height="wrap_content">
 
     <carbon.widget.EditText
@@ -53,6 +56,27 @@
         android:text="https://helloanuraghowareyjjws" />
 
     </carbon.widget.LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/requestTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linLay1"
+        android:layout_margin="16dp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/carbon_orange_500"
+        app:tabIndicatorHeight="3dp"
+        app:tabTextColor="@color/carbon_grey_500"
+        app:tabSelectedTextColor="@color/carbon_orange_500"
+        app:tabRippleColor="@color/carbon_black_12" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/requestPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/requestTabs"
+        android:layout_marginBottom="16dp" />
 
 
 </carbon.widget.RelativeLayout>
