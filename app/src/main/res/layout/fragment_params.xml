@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#0F1115">
 
-    <!-- Enable Params Switch -->
     <Switch
         android:id="@+id/switchEnableParams"
         android:layout_width="wrap_content"
@@ -16,7 +15,6 @@
         android:buttonTint="@color/carbon_orange_500"
         android:checked="true" />
 
-    <!-- Header Row -->
     <carbon.widget.LinearLayout
         android:id="@+id/headerRow"
         android:layout_width="match_parent"

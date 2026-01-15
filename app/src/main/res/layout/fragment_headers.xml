@@ -1,14 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<carbon.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HeadersFragment">
+    android:background="@color/bg_dark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Switch
+        android:id="@+id/switchEnableHeaders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Headers"
+        android:textColor="@color/text_primary"
+        android:layout_margin="16dp"
+        android:checked="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHeaders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/switchEnableHeaders"
+        android:paddingBottom="80dp" />
 
-</FrameLayout>
+    <carbon.widget.ImageView
+        android:id="@+id/fabAddHeader"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        app:carbon_tint="@color/carbon_orange_500"
+        android:src="@drawable/ic_add" />
+
+</carbon.widget.RelativeLayout>

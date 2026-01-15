@@ -1,14 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<carbon.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.BodyFragment">
+    android:background="@color/bg_dark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <carbon.widget.RadioGroup
+        android:id="@+id/rgBodyType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <RadioButton
+            android:id="@+id/rbNone"
+            android:text="none"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rbRaw"
+            android:text="raw"/>
+
+        <RadioButton
+            android:id="@+id/rbFormData"
+            android:text="form-data"/>
+
+    </carbon.widget.RadioGroup>
+
+    <carbon.widget.EditText
+        android:id="@+id/etRawBody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/rgBodyType"
+        android:hint="Enter raw JSON"
+        android:gravity="top"
+        android:padding="12dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"
+        android:visibility="gone"
+        app:carbon_cornerRadius="8dp"
+        android:background="#11151C"
+        android:inputType="textMultiLine"/>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFormData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rgBodyType"
+        android:visibility="gone"/>
+
+    <carbon.widget.ImageView
+        android:id="@+id/fabAddForm"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:carbon_tint="@color/carbon_orange_500"
+        android:src="@drawable/ic_add" />
+
+</carbon.widget.RelativeLayout>
