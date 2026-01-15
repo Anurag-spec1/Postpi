@@ -48,26 +48,49 @@ class BodyFragment : Fragment() {
     }
 
     private fun setupBodyTypeSelector() {
-        binding.rgBodyType.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
 
-                R.id.rbNone -> {
-                    bodyType = BodyType.NONE
-                    hideAll()
-                }
+        selectNone()
 
-                R.id.rbRaw -> {
-                    bodyType = BodyType.RAW
-                    showRaw()
-                }
+        binding.btnNone.setOnClickListener {
+            selectNone()
+        }
 
-                R.id.rbFormData -> {
-                    bodyType = BodyType.FORM_DATA
-                    showForm()
-                }
-            }
+        binding.btnRaw.setOnClickListener {
+            selectRaw()
+        }
+
+        binding.btnForm.setOnClickListener {
+            selectForm()
         }
     }
+
+    private fun resetButtons() {
+        binding.btnNone.setBackgroundResource(R.drawable.bg_body_type_unselected)
+        binding.btnRaw.setBackgroundResource(R.drawable.bg_body_type_unselected)
+        binding.btnForm.setBackgroundResource(R.drawable.bg_body_type_unselected)
+    }
+
+    private fun selectNone() {
+        bodyType = BodyType.NONE
+        resetButtons()
+        binding.btnNone.setBackgroundResource(R.drawable.bg_body_type_selected)
+        hideAll()
+    }
+
+    private fun selectRaw() {
+        bodyType = BodyType.RAW
+        resetButtons()
+        binding.btnRaw.setBackgroundResource(R.drawable.bg_body_type_selected)
+        showRaw()
+    }
+
+    private fun selectForm() {
+        bodyType = BodyType.FORM_DATA
+        resetButtons()
+        binding.btnForm.setBackgroundResource(R.drawable.bg_body_type_selected)
+        showForm()
+    }
+
 
     private fun hideAll() {
         binding.etRawBody.visibility = View.GONE

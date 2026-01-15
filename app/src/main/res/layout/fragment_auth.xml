@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<carbon.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AuthFragment">
+    android:background="@color/bg_dark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Spinner
+        android:id="@+id/spAuthType"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
 
-</FrameLayout>
+    <carbon.widget.EditText
+        android:id="@+id/etBearer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spAuthType"
+        android:layout_margin="16dp"
+        android:hint="Bearer Token"
+        android:visibility="gone"/>
+
+    <carbon.widget.LinearLayout
+        android:id="@+id/layoutBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spAuthType"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <carbon.widget.EditText
+            android:id="@+id/etUsername"
+            android:hint="Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <carbon.widget.EditText
+            android:id="@+id/etPassword"
+            android:hint="Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </carbon.widget.LinearLayout>
+
+    <carbon.widget.LinearLayout
+        android:id="@+id/layoutApiKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spAuthType"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <carbon.widget.EditText
+            android:id="@+id/etApiKeyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Key"/>
+
+        <carbon.widget.EditText
+            android:id="@+id/etApiKeyValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Value"/>
+    </carbon.widget.LinearLayout>
+
+</carbon.widget.RelativeLayout>

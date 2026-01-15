@@ -5,33 +5,36 @@
     android:layout_height="match_parent"
     android:background="@color/bg_dark">
 
-    <carbon.widget.RadioGroup
-        android:id="@+id/rgBodyType"
+    <carbon.widget.LinearLayout
+        android:id="@+id/bodyTypeContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="12dp">
 
-        <RadioButton
-            android:id="@+id/rbNone"
+        <carbon.widget.Button
+            android:id="@+id/btnNone"
             android:text="none"
-            android:checked="true"/>
+            style="@style/BodyTypeButton"/>
 
-        <RadioButton
-            android:id="@+id/rbRaw"
-            android:text="raw"/>
+        <carbon.widget.Button
+            android:id="@+id/btnRaw"
+            android:text="raw"
+            style="@style/BodyTypeButton"/>
 
-        <RadioButton
-            android:id="@+id/rbFormData"
-            android:text="form-data"/>
+        <carbon.widget.Button
+            android:id="@+id/btnForm"
+            android:text="form-data"
+            style="@style/BodyTypeButton"/>
 
-    </carbon.widget.RadioGroup>
+    </carbon.widget.LinearLayout>
+
 
     <carbon.widget.EditText
         android:id="@+id/etRawBody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rgBodyType"
+        android:layout_below="@id/bodyTypeContainer"
         android:hint="Enter raw JSON"
         android:gravity="top"
         android:padding="12dp"
@@ -46,7 +49,7 @@
         android:id="@+id/rvFormData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rgBodyType"
+        android:layout_below="@id/bodyTypeContainer"
         android:visibility="gone"/>
 
     <carbon.widget.ImageView
