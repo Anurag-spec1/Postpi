@@ -10,6 +10,11 @@ import com.anurag.postpi.R
 import com.anurag.postpi.adapter.ParamsAdapter
 import com.anurag.postpi.databinding.FragmentBodyBinding
 import com.anurag.postpi.dataclass.BodyType
+import okhttp3.FormBody
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class BodyFragment : Fragment() {
 
@@ -17,7 +22,7 @@ class BodyFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var formAdapter: ParamsAdapter
-    private var bodyType = BodyType.NONE
+    private var bodyType: BodyType = BodyType.NONE
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +37,7 @@ class BodyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupFormData()
         setupBodyTypeSelector()
+        selectNone()
     }
 
     private fun setupFormData() {
@@ -48,26 +54,22 @@ class BodyFragment : Fragment() {
     }
 
     private fun setupBodyTypeSelector() {
-
-        selectNone()
-
-        binding.btnNone.setOnClickListener {
-            selectNone()
-        }
-
-        binding.btnRaw.setOnClickListener {
-            selectRaw()
-        }
-
-        binding.btnForm.setOnClickListener {
-            selectForm()
-        }
+        binding.btnNone.setOnClickListener { selectNone() }
+        binding.btnRaw.setOnClickListener { selectRaw() }
+        binding.btnForm.setOnClickListener { selectForm() }
     }
+
 
     private fun resetButtons() {
         binding.btnNone.setBackgroundResource(R.drawable.bg_body_type_unselected)
         binding.btnRaw.setBackgroundResource(R.drawable.bg_body_type_unselected)
         binding.btnForm.setBackgroundResource(R.drawable.bg_body_type_unselected)
+    }
+
+    private fun hideAll() {
+        binding.etRawBody.visibility = View.GONE
+        binding.rvFormData.visibility = View.GONE
+        binding.fabAddForm.visibility = View.GONE
     }
 
     private fun selectNone() {
@@ -81,40 +83,44 @@ class BodyFragment : Fragment() {
         bodyType = BodyType.RAW
         resetButtons()
         binding.btnRaw.setBackgroundResource(R.drawable.bg_body_type_selected)
-        showRaw()
+        hideAll()
+        binding.etRawBody.visibility = View.VISIBLE
     }
 
     private fun selectForm() {
         bodyType = BodyType.FORM_DATA
         resetButtons()
         binding.btnForm.setBackgroundResource(R.drawable.bg_body_type_selected)
-        showForm()
-    }
-
-
-    private fun hideAll() {
-        binding.etRawBody.visibility = View.GONE
-        binding.rvFormData.visibility = View.GONE
-        binding.fabAddForm.visibility = View.GONE
-    }
-
-    private fun showRaw() {
-        binding.etRawBody.visibility = View.VISIBLE
-        binding.rvFormData.visibility = View.GONE
-        binding.fabAddForm.visibility = View.GONE
-    }
-
-    private fun showForm() {
-        binding.etRawBody.visibility = View.GONE
+        hideAll()
         binding.rvFormData.visibility = View.VISIBLE
         binding.fabAddForm.visibility = View.VISIBLE
     }
 
-    fun getBody(): Any? {
+    /* ---------------- REQUEST BODY ---------------- */
+
+    fun getRequestBody(method: String): RequestBody? {
+        if (method == "GET" || method == "DELETE") return null
+
         return when (bodyType) {
+
             BodyType.NONE -> null
-            BodyType.RAW -> binding.etRawBody.text.toString()
-            BodyType.FORM_DATA -> formAdapter.getEnabledParams()
+
+            BodyType.RAW -> {
+                val json = binding.etRawBody.text.toString()
+                if (json.isBlank()) return null
+                json.toRequestBody("application/json; charset=utf-8".toMediaType())
+            }
+
+            BodyType.FORM_DATA -> {
+                val builder = MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+
+                formAdapter.getEnabledParams().forEach {
+                    builder.addFormDataPart(it.key, it.value)
+                }
+
+                builder.build()
+            }
         }
     }
 
@@ -123,3 +129,4 @@ class BodyFragment : Fragment() {
         _binding = null
     }
 }
+

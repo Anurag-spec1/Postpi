@@ -51,4 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     api("tk.zielony:carbon:0.16.0.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
 }

@@ -77,7 +77,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/requestTabs"
+        android:layout_above="@id/sendReq"
         android:layout_marginBottom="16dp" />
+
+    <carbon.widget.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/carbon_blue_500"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+        android:text="SEND"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:carbon_cornerRadius="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/sendReq"
+        android:layout_marginBottom="20dp"/>
 
 
 </carbon.widget.RelativeLayout>

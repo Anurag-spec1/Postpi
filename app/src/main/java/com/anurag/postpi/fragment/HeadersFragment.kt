@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.anurag.postpi.R
-import com.anurag.postpi.adapter.KeyValueAdapter
+import com.anurag.postpi.adapter.ParamsAdapter
 import com.anurag.postpi.databinding.FragmentHeadersBinding
 import com.anurag.postpi.dataclass.ParamItem
 
@@ -15,8 +14,7 @@ class HeadersFragment : Fragment() {
 
     private var _binding: FragmentHeadersBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var adapter: KeyValueAdapter
+    private lateinit var adapter: ParamsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,25 +28,21 @@ class HeadersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = KeyValueAdapter(mutableListOf())
+        adapter = ParamsAdapter(mutableListOf())
 
         binding.rvHeaders.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = this@HeadersFragment.adapter
+            this.adapter = this@HeadersFragment.adapter
         }
 
         binding.fabAddHeader.setOnClickListener {
-            adapter.addItem()
-        }
-
-        binding.switchEnableHeaders.setOnCheckedChangeListener { _, enabled ->
-            binding.rvHeaders.alpha = if (enabled) 1f else 0.4f
-            binding.rvHeaders.isEnabled = enabled
+            adapter.addParam()
         }
     }
 
-    fun getEnabledHeaders(): List<ParamItem> =
-        adapter.getEnabledItems()
+    fun getEnabledHeaders(): List<ParamItem> {
+        return if (this::adapter.isInitialized) adapter.getEnabledParams() else emptyList()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
