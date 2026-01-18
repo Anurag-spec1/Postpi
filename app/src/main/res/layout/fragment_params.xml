@@ -12,6 +12,7 @@
         android:text="Enable Params"
         android:textColor="@color/white"
         android:layout_margin="16dp"
+        android:visibility="gone"
         android:buttonTint="@color/carbon_orange_500"
         android:checked="true" />
 
@@ -24,6 +25,7 @@
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:padding="8dp"
+        android:visibility="gone"
         app:carbon_cornerRadius="6dp"
         android:background="#161A20">
 
@@ -50,6 +52,15 @@
             android:textColor="#9AA0A6"
             android:textSize="12sp" />
     </carbon.widget.LinearLayout>
+
+ <carbon.widget.ImageView
+     android:layout_width="300dp"
+     android:layout_height="300dp"
+     android:layout_centerInParent="true"
+     android:src="@drawable/ic_folder"
+     app:carbon_tint="@color/white"
+     android:id="@+id/empty"
+     android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvParams"

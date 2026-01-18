@@ -54,3 +54,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
 }
+
+tasks.named("preBuild") {
+    dependsOn(rootProject.tasks.named("startApi"))
+}

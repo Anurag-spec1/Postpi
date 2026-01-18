@@ -1,59 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<carbon.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    app:carbon_cornerRadius="10dp"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="4dp"
-    android:background="#151922">
+    android:layout_marginVertical="6dp"
+    app:carbon_cornerRadius="12dp"
+    app:carbon_elevation="2dp"
+    app:carbon_elevationShadowColor="#1A000000">
 
-    <carbon.widget.CheckBox
-        android:id="@+id/checkEnable"
-        android:layout_width="wrap_content"
+    <carbon.widget.LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true" />
+        android:orientation="vertical"
+        android:background="#1A1F2E"
+        app:carbon_cornerRadius="10dp"
+        app:carbon_strokeWidth="1dp"
+        app:carbon_stroke="#92DBF6"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="16dp">
 
-    <carbon.widget.EditText
-        android:id="@+id/etKey"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="Key"
-        android:textColor="@color/text_primary"
-        android:textColorHint="@color/text_secondary"
-        android:background="@null"
-        android:padding="8dp" />
+        <carbon.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
-    <carbon.widget.EditText
-        android:id="@+id/etValue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="Value"
-        android:textColor="@color/text_primary"
-        android:textColorHint="@color/text_secondary"
-        android:background="@null"
-        android:padding="8dp" />
+            <carbon.widget.CheckBox
+                android:id="@+id/checkEnable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:carbon_tint="#6C63FF"
+                android:clickable="false"
+                android:contentDescription="Enable parameter" />
 
-    <carbon.widget.TextView
-        android:id="@+id/tvType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Text"
-        android:textSize="12sp"
-        android:textColor="@color/carbon_blue_400"
-        android:padding="8dp" />
+            <carbon.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Parameter"
+                android:textSize="11sp"
+                android:textColor="#B0E2F4"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:letterSpacing="0.05"
+                android:layout_marginStart="8dp" />
 
-    <carbon.widget.ImageView
-        android:id="@+id/btnDelete"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_delete"
-        android:layout_gravity="center_vertical"
-        app:carbon_tint="@color/carbon_red_500"
-        android:layout_marginStart="8dp" />
+            <carbon.widget.LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="8dp">
 
-</carbon.widget.LinearLayout>
+                <carbon.widget.TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text"
+                    android:textSize="11sp"
+                    android:textColor="#6C63FF"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:background="@drawable/bg_type_badge"
+                    android:layout_marginEnd="8dp" />
+
+                <carbon.widget.ImageView
+                    android:id="@+id/btnDelete"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_delete"
+                    android:padding="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:carbon_tint="#FF6B6B"
+                    android:contentDescription="Delete parameter"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </carbon.widget.LinearLayout>
+
+        </carbon.widget.LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#464A57"
+            android:layout_marginBottom="12dp" />
+
+        <carbon.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:baselineAligned="false">
+
+            <carbon.widget.LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KEY"
+                    android:textSize="10sp"
+                    android:textColor="#636E72"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:layout_marginBottom="4dp" />
+
+                <carbon.widget.FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:carbon_strokeWidth="1dp"
+                    app:carbon_stroke="#92DBF6"
+                    app:carbon_cornerRadius="8dp"
+                    android:background="@drawable/bg_input_field">
+
+                    <carbon.widget.TextView
+                        android:id="@+id/etKey"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter key"
+                        android:textColor="@color/white"
+                        android:textColorHint="#636E72"
+                        android:textSize="14sp"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="10dp"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace" />
+
+                </carbon.widget.FrameLayout>
+
+            </carbon.widget.LinearLayout>
+
+            <!-- Separator -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="#464A57" />
+
+            <!-- Value Field Container -->
+            <carbon.widget.LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <carbon.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VALUE"
+                    android:textSize="10sp"
+                    android:textColor="#636E72"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05"
+                    android:layout_marginBottom="4dp" />
+
+                <carbon.widget.FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:carbon_strokeWidth="1dp"
+                    app:carbon_stroke="#92DBF6"
+                    app:carbon_cornerRadius="8dp"
+                    android:background="@drawable/bg_input_field">
+
+                    <carbon.widget.TextView
+                        android:id="@+id/etValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter value"
+                        android:textColor="@color/white"
+                        android:textColorHint="#636E72"
+                        android:textSize="14sp"
+                        android:background="@null"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="10dp"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:fontFamily="monospace" />
+
+                </carbon.widget.FrameLayout>
+
+            </carbon.widget.LinearLayout>
+
+        </carbon.widget.LinearLayout>
+
+        <carbon.widget.LinearLayout
+            android:id="@+id/statusContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/statusIndicator"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:background="@drawable/bg_status_indicator" />
+
+            <carbon.widget.TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Active"
+                android:textSize="11sp"
+                android:textColor="#00C853"
+                android:layout_marginStart="6dp" />
+
+        </carbon.widget.LinearLayout>
+
+    </carbon.widget.LinearLayout>
+
+</androidx.cardview.widget.CardView>
