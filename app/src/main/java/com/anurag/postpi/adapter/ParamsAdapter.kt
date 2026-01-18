@@ -60,8 +60,8 @@ class ParamsAdapter(
 
     override fun getItemCount(): Int = params.size
 
-    fun addParam() {
-        params.add(ParamItem())
+    fun addParam(item: ParamItem) {
+        params.add(item)
         notifyItemInserted(params.size - 1)
     }
 
